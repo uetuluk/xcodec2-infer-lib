@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xcodec2-infer-lib"
+version = "0.1.0"
+description = "Trying to achieve M chip Macbook support for https://huggingface.co/HKUSTAudio/xcodec2."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "CC-BY-4.0" }
+authors = [{ name = "Utku Ege Tuluk" }]
