@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,5 +8,29 @@ version = "0.1.0"
 description = "Trying to achieve M chip Macbook support for https://huggingface.co/HKUSTAudio/xcodec2."
 readme = "README.md"
 requires-python = ">=3.12"
-license = { text = "CC-BY-4.0" }
+license = { text = "CC-BY-4.0" }  # Changed to SPDX identifier if possible
 authors = [{ name = "Utku Ege Tuluk" }]
+urls = { homepage = "https://github.com/uetuluk/xcodec2-infer-lib" }
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: CC-BY-4.0", # Use OSI approved licenses if possible
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "torch==2.4.1",
+    "numpy==2.0.2",
+    "einops==0.8.0",
+    "transformers==4.44.2",
+    "rotary-embedding-torch==0.8.6",
+    "vector-quantize-pytorch==1.21.7",
+]
+
+[tool.pytest.ini_options] # Recommended way to configure pytest
+testpaths = ["tests"] # Example test directory
+
+[project.optional-dependencies] # Use project table for optional dependencies
+dev = ["pytest", "safetensors"]
+

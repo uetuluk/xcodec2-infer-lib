@@ -11,3 +11,8 @@ pip install -e .
 # Setting up for use
 
 pip install xcodec2-infer-lib
+
+# Testing
+
+export MODEL_PATH="your_model_path" # refers to xcodec model
+pytest test_xcodec.py
