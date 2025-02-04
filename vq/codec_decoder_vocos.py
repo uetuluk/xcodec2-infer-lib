@@ -3,7 +3,7 @@ import torch.nn as nn
 from vq.residual_vq import ResidualVQ
 from vq.alias_free_torch import *
 from vq.bs_roformer5 import TransformerBlock
-from torchtune.modules import RotaryPositionalEmbeddings
+from rotary_embedding_torch import RotaryEmbedding
 from vector_quantize_pytorch import ResidualFSQ
 
 class ISTFT(nn.Module):
@@ -318,7 +318,7 @@ class VocosBackbone(Backbone):
         self.prior_net = nn.Sequential(*prior_net) 
 
         depth = depth
-        time_rotary_embed = RotaryPositionalEmbeddings(dim=pos_meb_dim)
+        time_rotary_embed = RotaryEmbedding(dim=pos_meb_dim)
         
  
         transformer_blocks = [

@@ -1,0 +1,6 @@
+torch==2.4.1
+numpy==2.0.2
+einops==0.8.0
+transformers==4.44.2
+rotary-embedding-torch==0.8.6
+vector-quantize-pytorch==1.21.7

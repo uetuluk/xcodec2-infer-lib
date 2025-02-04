@@ -1,5 +1,3 @@
-import sys
- 
 import numpy as np
 import torch
 import torch.nn as nn
@@ -12,7 +10,7 @@ from torch.nn import utils
 
 from vq.bs_roformer5 import TransformerBlock
  
-from torchtune.modules import RotaryPositionalEmbeddings
+from rotary_embedding_torch import RotaryEmbedding
 
 def init_weights(m):
     if isinstance(m, nn.Conv1d):
@@ -167,7 +165,7 @@ class CodecDecoder_oobleck_Transformer(nn.Module):
             full_commit_loss=vq_full_commit_loss,
         )
 
-        time_rotary_embed = RotaryPositionalEmbeddings(dim=pos_meb_dim)
+        time_rotary_embed = RotaryEmbedding(dim=pos_meb_dim)
          
         transformer_blocks = [
             TransformerBlock(dim=hidden_dim, n_heads=heads, rotary_embed=time_rotary_embed)

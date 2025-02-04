@@ -1,15 +1,8 @@
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-from torch.nn import Module, ModuleList
-import torchaudio
 from einops import rearrange
-import numpy as np
-# from rotary_embedding_torch import RotaryEmbedding
-
-from torchtune.modules import RotaryPositionalEmbeddings
+from rotary_embedding_torch import RotaryEmbedding
  
-
  
 class RMSNorm(torch.nn.Module):
     def __init__(self, dim: int, eps: float = 1e-6):
@@ -42,7 +35,7 @@ class MLP(nn.Module):
 
 class Attention(nn.Module):
 
-    def __init__(self, dim: int, n_heads: int, rotary_embed: RotaryPositionalEmbeddings):
+    def __init__(self, dim: int, n_heads: int, rotary_embed: RotaryEmbedding):
         super().__init__()
         
         assert dim % n_heads == 0
@@ -74,8 +67,10 @@ class Attention(nn.Module):
         q, k, v = rearrange(self.c_attn(x), 'b t (r h d) -> r b h t d', r=3, h=self.n_heads)
         # q, k, v: (b, h, t, d)
 
-        q = self.rotary_embed(q)
-        k = self.rotary_embed(k)
+        # q = self.rotary_embed(q)
+        # k = self.rotary_embed(k)
+        q = self.rotary_embed.rotate_queries_or_keys(q)
+        k = self.rotary_embed.rotate_queries_or_keys(k)
 
         if self.flash:
             y = torch.nn.functional.scaled_dot_product_attention(q, k, v, attn_mask=None, dropout_p=0, is_causal=False)
@@ -89,7 +84,7 @@ class Attention(nn.Module):
 
 
 class TransformerBlock(nn.Module):
-    def __init__(self, dim: int, n_heads: int, rotary_embed: RotaryPositionalEmbeddings):
+    def __init__(self, dim: int, n_heads: int, rotary_embed: RotaryEmbedding):
         
         super().__init__()
         self.dim = dim
@@ -111,7 +106,7 @@ class TransformerBlock(nn.Module):
     
 
 if __name__ == '__main__':
-    rotary_embed_128 = RotaryPositionalEmbeddings(dim=128)
+    rotary_embed_128 = RotaryEmbedding(dim=128)
     transformer_block = TransformerBlock(
         dim=1024,
         n_heads=8,

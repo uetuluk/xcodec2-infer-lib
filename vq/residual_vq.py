@@ -1,4 +1,3 @@
-import math
 import torch
 from torch import nn
 from .factorized_vector_quantize import FactorizedVectorQuantize

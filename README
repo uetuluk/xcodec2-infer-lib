@@ -1,0 +1,5 @@
+conda create xcodec2-infer-lib python=3.12 -y
+
+conda activate xcodec2-infer-lib
+
+pip install -r requirements.txt
