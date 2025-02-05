@@ -24,8 +24,12 @@ pip install xcodec2-infer-lib
 
 # Testing
 
-export MODEL_PATH="your_model_path" # refers to xcodec model
+Replace `your_model_path` with the absolute path to your model.
+
+```
+export MODEL_PATH="your_model_path" 
 pytest test_xcodec.py
+```
 
 # Model
 
