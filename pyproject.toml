@@ -8,14 +8,13 @@ version = "0.1.0"
 description = "Trying to achieve M chip Macbook support for https://huggingface.co/HKUSTAudio/xcodec2."
 readme = "README.md"
 requires-python = ">=3.12"
-license = { text = "CC-BY-4.0" }  # Changed to SPDX identifier if possible
+license = { expression = "CC-BY-4.0" }
 authors = [{ name = "Utku Ege Tuluk" }]
 urls = { homepage = "https://github.com/uetuluk/xcodec2-infer-lib" }
 
 classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.12",
-    "License :: OSI Approved :: CC-BY-4.0", # Use OSI approved licenses if possible
     "Operating System :: OS Independent",
 ]
 
