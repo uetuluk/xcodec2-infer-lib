@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Trying to achieve M chip Macbook support for https://huggingface.co/HKUSTAudio/xcodec2."
 readme = "README.md"
 requires-python = ">=3.12"
-license = { expression = "CC-BY-4.0" }
+license = { text = "Creative Commons Attribution 4.0 International (CC BY 4.0)" }
 authors = [{ name = "Utku Ege Tuluk" }]
 urls = { homepage = "https://github.com/uetuluk/xcodec2-infer-lib" }
 
