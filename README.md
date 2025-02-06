@@ -28,6 +28,7 @@ Replace `your_model_path` with the absolute path to your model.
 
 ```
 export MODEL_PATH="your_model_path" 
+cd tests
 pytest test_xcodec.py
 ```
 
